@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="84DFB489-4D17-7218-FA7D-018A5B111071" containerWithKeyObject="2B4957B7-D198-C7FF-00C8-62D60589ACEC" localFKIndex="65676FD1-EE4E-6223-D8AD-A24FAA7B09B3" name="Debt_Group_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-17 00:31:26 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<referredTableLongName>Group</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>329DECBD-D380-C68A-31A2-BA75A049E97F</referredTableID>
+<keyObject>1DB12123-DFE1-F954-2521-658C2DAFEAF9</keyObject>
+<referredKeyID>1DB12123-DFE1-F954-2521-658C2DAFEAF9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2B4957B7-D198-C7FF-00C8-62D60589ACEC" name="Debt">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-16 21:23:03 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="B6F3CBF7-5B48-C0D2-B3CD-1E990586650A">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-17 00:26:42 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="group" id="AEBE7440-8D47-1857-6330-8F469CDEF8C4">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-17 00:28:43 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="84DFB489-4D17-7218-FA7D-018A5B111071" referredColumn="6DC16B6F-1A7F-E318-3305-5065B3CD5586"/>
+</associations>
+</Column>
+<Column name="recipient" id="BF344189-44F4-6DFC-6C6E-EFB12FE077AB">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-17 00:29:39 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="debtor" id="F942C276-8162-252D-771B-603D47D529A8">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-17 00:31:09 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="value" id="140C78A9-5805-BE6E-86E7-BD6E0B40C927">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-17 01:11:30 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="53113EB5-FC5D-13EC-6E60-0413C208F197" name="Debt_PK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-17 00:26:42 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B6F3CBF7-5B48-C0D2-B3CD-1E990586650A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="65676FD1-EE4E-6223-D8AD-A24FAA7B09B3" name="Debt_Group_FK">
+<createdBy>sebas</createdBy>
+<createdTime>2017-11-17 00:31:26 UTC</createdTime>
+<ownerDesignName>DBModel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AEBE7440-8D47-1857-6330-8F469CDEF8C4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
