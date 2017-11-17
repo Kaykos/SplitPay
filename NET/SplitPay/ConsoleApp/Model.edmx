@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="UserSet" EntityType="Model.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BalanceSet" EntityType="Model.Store.BalanceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransactionSet" EntityType="Model.Store.TransactionSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserBalance" Association="Model.Store.UserBalance">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Balance" EntitySet="BalanceSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserTransaction" Association="Model.Store.UserTransaction">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Transaction" EntitySet="TransactionSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="documentNumber" />
+      <PropertyRef Name="documentType" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="documentNumber" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="documentType" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="BalanceSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="currentValue" Type="int" Nullable="false" />
+    <Property Name="group" Type="int" Nullable="false" />
+    <Property Name="User_documentNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="User_documentType" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="value" Type="int" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_documentNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="User_documentType" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="UserBalance">
+    <End Role="User" Type="Model.Store.UserSet" Multiplicity="1" />
+    <End Role="Balance" Type="Model.Store.BalanceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="documentNumber" />
+        <PropertyRef Name="documentType" />
+      </Principal>
+      <Dependent Role="Balance">
+        <PropertyRef Name="User_documentNumber" />
+        <PropertyRef Name="User_documentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserTransaction">
+    <End Role="User" Type="Model.Store.UserSet" Multiplicity="1" />
+    <End Role="Transaction" Type="Model.Store.TransactionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="documentNumber" />
+        <PropertyRef Name="documentType" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="User_documentNumber" />
+        <PropertyRef Name="User_documentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserSet" EntityType="Model.User" />
+          <EntitySet Name="BalanceSet" EntityType="Model.Balance" />
+          <AssociationSet Name="UserBalance" Association="Model.UserBalance">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Balance" EntitySet="BalanceSet" />
+          </AssociationSet>
+          <EntitySet Name="TransactionSet" EntityType="Model.Transaction" />
+          <AssociationSet Name="UserTransaction" Association="Model.UserTransaction">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Transaction" EntitySet="TransactionSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="documentNumber" />
+            <PropertyRef Name="documentType" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Balance" Relationship="Model.UserBalance" FromRole="User" ToRole="Balance" />
+          <Property Name="documentNumber" Type="String" Nullable="false" MaxLength="100" />
+          <NavigationProperty Name="Transaction" Relationship="Model.UserTransaction" FromRole="User" ToRole="Transaction" />
+          <Property Name="documentType" Type="String" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Balance">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currentValue" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model.UserBalance" FromRole="Balance" ToRole="User" />
+          <Property Name="group" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserBalance">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.Balance" Role="Balance" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="String" Nullable="false" />
+          <Property Name="value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model.UserTransaction" FromRole="Transaction" ToRole="User" />
+          <Property Name="description" Type="String" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="UserTransaction">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.Transaction" Role="Transaction" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
+          <ScalarProperty Name="documentType" ColumnName="documentType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BalanceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Balance)">
+        <MappingFragment StoreEntitySet="BalanceSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="currentValue" ColumnName="currentValue" />
+          <ScalarProperty Name="group" ColumnName="group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Transaction)">
+        <MappingFragment StoreEntitySet="TransactionSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserBalance" TypeName="Model.UserBalance" StoreEntitySet="BalanceSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="documentNumber" ColumnName="User_documentNumber" />
+        <ScalarProperty Name="documentType" ColumnName="User_documentType" />
+      </EndProperty>
+      <EndProperty Name="Balance">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserTransaction" TypeName="Model.UserTransaction" StoreEntitySet="TransactionSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="documentNumber" ColumnName="User_documentNumber" />
+        <ScalarProperty Name="documentType" ColumnName="User_documentType" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
