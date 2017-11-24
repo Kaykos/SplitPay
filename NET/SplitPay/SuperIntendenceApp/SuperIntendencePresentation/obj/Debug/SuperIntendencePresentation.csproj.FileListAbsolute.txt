@@ -25,3 +25,4 @@ E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperI
 E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperIntendencePresentation\obj\Debug\SuperIntendencePresentation.pdb
 E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperIntendencePresentation\bin\Newtonsoft.Json.dll
 E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperIntendencePresentation\bin\Newtonsoft.Json.xml
+E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperIntendencePresentation\obj\Debug\SuperIntendencePresentation.csprojResolveAssemblyReference.cache

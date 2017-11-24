@@ -18,3 +18,4 @@ E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperI
 E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperIntendenceApp\obj\Debug\SuperIntendenceApp.csproj.CoreCompileInputs.cache
 E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperIntendenceApp\obj\Debug\SuperIntendenceApp.dll
 E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperIntendenceApp\obj\Debug\SuperIntendenceApp.pdb
+E:\Dropbox\Repositories\SplitPay\SplitPay\NET\SplitPay\SuperIntendenceApp\SuperIntendenceApp\obj\Debug\SuperIntendenceApp.csprojResolveAssemblyReference.cache

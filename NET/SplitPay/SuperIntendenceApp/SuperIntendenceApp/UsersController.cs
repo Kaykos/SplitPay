@@ -16,7 +16,7 @@ namespace SuperIntendenceApp {
 
         // GET: api/Users
         public IQueryable<UserSet> GetUserSet() {
-            System.Diagnostics.Debug.WriteLine($"KEEEK!");
+            System.Diagnostics.Debug.WriteLine($" - [GET] users/");
             return db.UserSet;
         }
 
@@ -24,7 +24,7 @@ namespace SuperIntendenceApp {
         [ResponseType(typeof(UserSet))]
         [Route("api/users/{documentType}/{documentNumber}")]
         public IHttpActionResult GetUserSet(string documentType, string documentNumber) {
-            //System.Diagnostics.Debug.WriteLine($"Id: {documentType} + {documentNumber}");
+            System.Diagnostics.Debug.WriteLine($" - [GET] users/{documentType}/{documentNumber}");
             UserSet userSet = db.UserSet.Find(documentNumber, documentType);
             if (userSet == null) {
                 return NotFound();
@@ -33,38 +33,10 @@ namespace SuperIntendenceApp {
             return Ok(userSet);
         }
 
-
-        // PUT: api/Users/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutUserSet(string id, UserSet userSet) {
-            if (!ModelState.IsValid) {
-                return BadRequest(ModelState);
-            }
-
-            if (id != userSet.documentNumber) {
-                return BadRequest();
-            }
-
-            db.Entry(userSet).State = EntityState.Modified;
-
-            try {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException) {
-                if (!UserSetExists(id)) {
-                    return NotFound();
-                }
-                else {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
         // POST: api/Users
         [ResponseType(typeof(UserSet))]
         public IHttpActionResult PostUserSet(UserSet userSet) {
+            System.Diagnostics.Debug.WriteLine($" - [POST] users/");
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
@@ -75,16 +47,42 @@ namespace SuperIntendenceApp {
                 db.SaveChanges();
             }
             catch (DbUpdateException) {
-                if (UserSetExists(userSet.documentNumber)) {
+                if (UserSetExists(userSet.documentNumber, userSet.documentType)) {
                     return Conflict();
                 }
                 else {
                     throw;
                 }
             }
-
-            return CreatedAtRoute("DefaultApi", new { id = userSet.documentNumber }, userSet);
+            UserSet newUser = db.UserSet.Find(userSet.documentNumber, userSet.documentType);
+            return Ok(newUser);
+            //return CreatedAtRoute("DefaultApi", new { id = userSet.documentNumber }, userSet);
         }
+
+        // PUT: api/Users/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutUserSet(UserSet userSet) {
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+
+            db.Entry(userSet).State = EntityState.Modified;
+
+            try {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException) {
+                if (!UserSetExists(userSet.documentNumber, userSet.documentType)) {
+                    return NotFound();
+                }
+                else {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
 
         // DELETE: api/Users/5
         [ResponseType(typeof(UserSet))]
@@ -107,8 +105,8 @@ namespace SuperIntendenceApp {
             base.Dispose(disposing);
         }
 
-        private bool UserSetExists(string id) {
-            return db.UserSet.Count(e => e.documentNumber == id) > 0;
+        private bool UserSetExists(string documentNumber, string documentType) {
+            return db.UserSet.Count(e => e.documentNumber == documentNumber && e.documentType == documentType) > 0;
         }
     }
 }

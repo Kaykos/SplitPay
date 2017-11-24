@@ -43,14 +43,10 @@ namespace SuperIntendencePresentation.Views {
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,email,password,documentNumber,documentType")] User user) {
-            if (ModelState.IsValid) {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(user);
+        public ActionResult Create([Bind(Include = "name,email,password,documentNumber,documentType")] User user) {
+            System.Diagnostics.Debug.WriteLine($" Trying to post");
+            User newUser = proxy.CreateUser(user);
+            return View("Details", newUser);
         }
 
         // GET: Users/Edit/5
