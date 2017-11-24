@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SQLServerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BalanceSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="currentValue" Type="int" Nullable="false" />
+    <Property Name="group" Type="int" Nullable="false" />
+    <Property Name="User_documentNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="User_documentType" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="value" Type="int" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_documentNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="User_documentType" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="documentNumber" />
+      <PropertyRef Name="documentType" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="documentNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="documentType" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_UserBalance">
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+    <End Role="BalanceSet" Type="Self.BalanceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSet">
+        <PropertyRef Name="documentNumber" />
+        <PropertyRef Name="documentType" />
+      </Principal>
+      <Dependent Role="BalanceSet">
+        <PropertyRef Name="User_documentNumber" />
+        <PropertyRef Name="User_documentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTransaction">
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+    <End Role="TransactionSet" Type="Self.TransactionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSet">
+        <PropertyRef Name="documentNumber" />
+        <PropertyRef Name="documentType" />
+      </Principal>
+      <Dependent Role="TransactionSet">
+        <PropertyRef Name="User_documentNumber" />
+        <PropertyRef Name="User_documentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SQLServerDBModelStoreContainer">
+    <EntitySet Name="BalanceSet" EntityType="Self.BalanceSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionSet" EntityType="Self.TransactionSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSet" EntityType="Self.UserSet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_UserBalance" Association="Self.FK_UserBalance">
+      <End Role="UserSet" EntitySet="UserSet" />
+      <End Role="BalanceSet" EntitySet="BalanceSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTransaction" Association="Self.FK_UserTransaction">
+      <End Role="UserSet" EntitySet="UserSet" />
+      <End Role="TransactionSet" EntitySet="TransactionSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
