@@ -23,7 +23,6 @@ namespace SuperIntendenceApp.Services
         {
             System.Diagnostics.Debug.WriteLine($" - [GET] transactions/{documentType}/{documentNumber}");
             UserSet user = db.UserSet.Find(documentNumber, documentType);
-            System.Diagnostics.Debug.WriteLine($" Size: {user.TransactionSet.Count}");
             return user.TransactionSet.AsQueryable();
         }
 
