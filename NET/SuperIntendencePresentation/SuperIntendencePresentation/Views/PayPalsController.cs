@@ -33,7 +33,8 @@ namespace SuperIntendencePresentation.Views
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,documentType,documentNumber,password,value")] PayPal payPal)
         {
-            return View(facade.Create(payPal));
+            var result = facade.Create(payPal);
+            return View();
         }
     }
 }

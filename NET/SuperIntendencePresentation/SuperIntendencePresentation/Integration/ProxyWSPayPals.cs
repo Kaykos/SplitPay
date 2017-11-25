@@ -11,9 +11,9 @@ namespace SuperIntendencePresentation.Integration
 {
     public class ProxyWSPayPals
     {
-        readonly string BASE_URI = "http://10.192.70.21:64698/api/paypals";
+        readonly string BASE_URI = "http://10.192.70.21:64698/api/paypal";
 
-        public PayPal CreatePayPal(PayPal user)
+        public bool CreatePayPal(PayPal user)
         {
             var stringPayload = JsonConvert.SerializeObject(user);
             var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
@@ -21,7 +21,7 @@ namespace SuperIntendencePresentation.Integration
             {
                 string serviceUri = $"{BASE_URI}";
                 var response = httpClient.PostAsync(serviceUri, httpContent);
-                return JsonConvert.DeserializeObject<PayPal>(response.Result.Content.ReadAsStringAsync().Result);
+                return JsonConvert.DeserializeObject<bool>(response.Result.Content.ReadAsStringAsync().Result);
             }
         }
     }

@@ -16,7 +16,7 @@ namespace SuperIntendencePresentation.Facades
             proxy = new ProxyWSPayPals();
         }
 
-        public PayPal Create(PayPal payPal)
+        public bool Create(PayPal payPal)
         {
             return proxy.CreatePayPal(payPal);
         }
