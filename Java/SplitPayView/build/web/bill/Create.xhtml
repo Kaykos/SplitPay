@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Create Bill"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Id:" for="id" />
+                    <h:inputText id="id" value="#{billController.selected.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
+                    <h:outputLabel value="Title:" for="title" />
+                    <h:inputText id="title" value="#{billController.selected.title}" title="Title" required="true" requiredMessage="The Title field is required."/>
+                    <h:outputLabel value="Cost:" for="cost" />
+                    <h:inputText id="cost" value="#{billController.selected.cost}" title="Cost" required="true" requiredMessage="The Cost field is required."/>
+                    <h:outputLabel value="Location:" for="location" />
+                    <h:inputText id="location" value="#{billController.selected.location}" title="Location" />
+                    <h:outputLabel value="Type:" for="type" />
+                    <h:inputText id="type" value="#{billController.selected.type}" title="Type" />
+                    <h:outputLabel value="Note:" for="note" />
+                    <h:inputTextarea id="note" value="#{billController.selected.note}" title="Note" />
+                    <h:outputLabel value="Group:" for="grp" />
+                    <h:selectOneMenu id="grp" value="#{billController.selected.grp}" title="Group" required="true" requiredMessage="required">
+                        <f:selectItems value="#{grpController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{billController.create}" value="Create" />
+                <br />
+                <br />
+                <h:commandLink action="#{billController.prepareList}" value="Bill List" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Index"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

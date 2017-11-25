@@ -11,7 +11,7 @@ namespace SuperIntendenceApp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class UserSet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace SuperIntendenceApp.Models
             this.BalanceSet = new HashSet<BalanceSet>();
             this.TransactionSet = new HashSet<TransactionSet>();
         }
-    
+
         public int id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
@@ -28,10 +28,20 @@ namespace SuperIntendenceApp.Models
         public string documentNumber { get; set; }
         public string documentType { get; set; }
         public int balance { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BalanceSet> BalanceSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TransactionSet> TransactionSet { get; set; }
+
+        public bool ShouldSerializeTransactionSet()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeBalanceSet()
+        {
+            return false;
+        }
     }
 }
