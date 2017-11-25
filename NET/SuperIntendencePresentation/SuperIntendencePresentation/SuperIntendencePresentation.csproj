@@ -139,21 +139,26 @@
     <Content Include="Views\Transactions\Details.cshtml" />
     <Content Include="Views\Transactions\Edit.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
+    <Content Include="Views\PayPals\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Facades\PayPalsFacade.cs" />
     <Compile Include="Facades\TransactionsFacade.cs" />
     <Compile Include="Facades\UsersFacade.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Integration\ProxyWSPayPals.cs" />
     <Compile Include="Integration\ProxyWSTransactions.cs" />
     <Compile Include="Integration\ProxyWSUsers.cs" />
     <Compile Include="Models\Balance.cs" />
+    <Compile Include="Models\PayPal.cs" />
     <Compile Include="Models\TestContext.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\PayPalsController.cs" />
     <Compile Include="Views\TransactionsController.cs" />
     <Compile Include="Views\UsersController.cs" />
   </ItemGroup>
