@@ -32,5 +32,15 @@ namespace SuperIntendenceApp.Models
         public virtual ICollection<BalanceSet> BalanceSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TransactionSet> TransactionSet { get; set; }
+
+        public bool ShouldSerializeTransactionSet()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeBalanceSet()
+        {
+            return false;
+        }
     }
 }

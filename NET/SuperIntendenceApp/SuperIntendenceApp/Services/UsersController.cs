@@ -16,6 +16,7 @@ namespace SuperIntendenceApp.Services
     {
         private SuperIntendenceEntities db = new SuperIntendenceEntities();
 
+        //Solicitar todos los usuarios
         // GET: api/Users
         public IQueryable<UserSet> GetUserSet()
         {
@@ -23,7 +24,8 @@ namespace SuperIntendenceApp.Services
             return db.UserSet;
         }
 
-        // GET: api/Users/5
+        //Solicitar un usuario por la llave (tipo de documento y número de documento)
+        // GET: api/Users/CC/123456
         [ResponseType(typeof(UserSet))]
         [Route("api/users/{documentType}/{documentNumber}")]
         public IHttpActionResult GetUserSet(string documentType, string documentNumber)
@@ -38,6 +40,7 @@ namespace SuperIntendenceApp.Services
             return Ok(userSet);
         }
 
+        //Crear un usuario
         // POST: api/Users
         [ResponseType(typeof(UserSet))]
         public IHttpActionResult PostUserSet(UserSet userSet)
@@ -67,10 +70,10 @@ namespace SuperIntendenceApp.Services
             }
             UserSet newUser = db.UserSet.Find(userSet.documentNumber, userSet.documentType);
             return Ok(newUser);
-            //return CreatedAtRoute("DefaultApi", new { id = userSet.documentNumber }, userSet);
         }
 
-        // PUT: api/Users/5
+        //Modificar un usuario
+        // PUT: api/Users/
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUserSet(UserSet userSet)
         {
@@ -101,7 +104,8 @@ namespace SuperIntendenceApp.Services
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // DELETE: api/Users/5
+        //Eliminar un usuario
+        // DELETE: api/Users/
         [ResponseType(typeof(UserSet))]
         [Route("api/users/{documentType}/{documentNumber}")]
         public IHttpActionResult DeleteUserSet(string documentType, string documentNumber)

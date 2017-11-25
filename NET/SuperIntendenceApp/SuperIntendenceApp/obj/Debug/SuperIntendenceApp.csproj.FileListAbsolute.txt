@@ -44,6 +44,6 @@ C:\Users\sala_a\Documents\SplitPay\NET\SuperIntendenceApp\SuperIntendenceApp\bin
 C:\Users\sala_a\Documents\SplitPay\NET\SuperIntendenceApp\SuperIntendenceApp\bin\es\System.Net.Http.Formatting.resources.dll
 C:\Users\sala_a\Documents\SplitPay\NET\SuperIntendenceApp\SuperIntendenceApp\bin\es\System.Web.Http.resources.dll
 C:\Users\sala_a\Documents\SplitPay\NET\SuperIntendenceApp\SuperIntendenceApp\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\sala_a\Documents\SplitPay\NET\SuperIntendenceApp\SuperIntendenceApp\obj\Debug\SuperIntendenceApp.csprojResolveAssemblyReference.cache
 C:\Users\sala_a\Documents\SplitPay\NET\SuperIntendenceApp\SuperIntendenceApp\obj\Debug\SuperIntendenceApp.dll
 C:\Users\sala_a\Documents\SplitPay\NET\SuperIntendenceApp\SuperIntendenceApp\obj\Debug\SuperIntendenceApp.pdb
+C:\Users\sala_a\Documents\SplitPay\NET\SuperIntendenceApp\SuperIntendenceApp\obj\Debug\SuperIntendenceApp.csprojResolveAssemblyReference.cache

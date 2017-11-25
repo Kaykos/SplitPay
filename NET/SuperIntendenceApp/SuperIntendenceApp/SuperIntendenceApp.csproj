@@ -131,6 +131,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TransactionsController.cs" />
     <Compile Include="Services\UsersController.cs" />
   </ItemGroup>
   <ItemGroup>
