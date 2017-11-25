@@ -67,3 +67,4 @@ C:\Users\sala_a\Downloads\SplitPay\NET\SuperIntendencePresentation\SuperIntenden
 C:\Users\sala_a\Downloads\SplitPay\NET\SuperIntendencePresentation\SuperIntendencePresentation\obj\Debug\SuperIntendencePresentation.csproj.App.config
 C:\Users\sala_a\Downloads\SplitPay\NET\SuperIntendencePresentation\SuperIntendencePresentation\obj\Debug\SuperIntendencePresentation.dll
 C:\Users\sala_a\Downloads\SplitPay\NET\SuperIntendencePresentation\SuperIntendencePresentation\obj\Debug\SuperIntendencePresentation.pdb
+C:\Users\sala_a\Downloads\SplitPay\NET\SuperIntendencePresentation\SuperIntendencePresentation\obj\Debug\SuperIntendencePresentation.csprojResolveAssemblyReference.cache
