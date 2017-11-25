@@ -36,13 +36,13 @@ namespace SuperIntendencePresentation.Views
             }
             return View(user);
         }
-        
+
         // GET: users/create
         public ActionResult Create()
         {
             return View();
         }
-        
+
         // POST: users/create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -50,7 +50,7 @@ namespace SuperIntendencePresentation.Views
         {
             return View("Details", facade.Create(user));
         }
-        
+
         // GET: users/edit/documentType/documentNumber
         public ActionResult Edit(string documentType, string documentNumber)
         {
@@ -59,7 +59,8 @@ namespace SuperIntendencePresentation.Views
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = facade.getUser(documentType, documentNumber);
-            if (user == null) {
+            if (user == null)
+            {
                 return HttpNotFound();
             }
             return View(user);
@@ -72,15 +73,17 @@ namespace SuperIntendencePresentation.Views
         {
             return View(facade.Update(user));
         }
-        
+
         // GET: users/delete/documentType/documentNumber
-        public ActionResult Delete(string documentType, string documentNumber) {
+        public ActionResult Delete(string documentType, string documentNumber)
+        {
             if (documentType == null || documentNumber == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = facade.getUser(documentType, documentNumber);
-            if (user == null) {
+            if (user == null)
+            {
                 return HttpNotFound();
             }
             return View(user);
@@ -89,7 +92,8 @@ namespace SuperIntendencePresentation.Views
         // POST: users/delete/documentType/documentNumber
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string documentType, string documentNumber) {
+        public ActionResult DeleteConfirmed(string documentType, string documentNumber)
+        {
             facade.Delete(documentType, documentNumber);
             return RedirectToAction("Index");
         }

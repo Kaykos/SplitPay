@@ -50,9 +50,17 @@
             @Html.DisplayFor(model => model.documentType)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.balance)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { documentType = item.documentType, documentNumber = item.documentNumber }) |
+    @Html.ActionLink("Edit", "Edit", new { documentType = Model.documentType, documentNumber = Model.documentNumber }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

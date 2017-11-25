@@ -23,6 +23,7 @@ namespace SuperIntendencePresentation.Models
         public string password { get; set; }
         public string documentNumber { get; set; }
         public string documentType { get; set; }
+        public int balance { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Balance> Balances { get; set; }
