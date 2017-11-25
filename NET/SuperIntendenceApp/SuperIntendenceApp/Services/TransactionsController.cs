@@ -14,7 +14,7 @@ namespace SuperIntendenceApp.Services
 {
     public class TransactionsController : ApiController
     {
-        private SuperIntendenceEntities db = new SuperIntendenceEntities();
+        private SQLServerDBEntities db = new SQLServerDBEntities();
 
         //Solicitar todas las transacciones de un usuario
         // GET: api/Transactions/CC/123456

@@ -14,7 +14,7 @@ namespace SuperIntendenceApp.Services
 {
     public class UsersController : ApiController
     {
-        private SuperIntendenceEntities db = new SuperIntendenceEntities();
+        private SQLServerDBEntities db = new SQLServerDBEntities();
 
         //Solicitar todos los usuarios
         // GET: api/Users

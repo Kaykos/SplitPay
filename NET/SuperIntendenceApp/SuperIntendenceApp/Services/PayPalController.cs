@@ -1,6 +1,7 @@
 ﻿using SuperIntendenceApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -13,7 +14,7 @@ namespace SuperIntendenceApp.Services
     public class PayPalController : ApiController
     {
 
-        private SuperIntendenceEntities db = new SuperIntendenceEntities();
+        private SQLServerDBEntities db = new SQLServerDBEntities();
 
         //Crear un usuario
         // POST: api/Users
@@ -32,6 +33,10 @@ namespace SuperIntendenceApp.Services
             {
                 if (payPalRequest.password.Equals(user.password))
                 {
+                    user.balance = user.balance + payPalRequest.value;
+
+                    db.Entry(user).State = EntityState.Modified;
+
                     TransactionSet transaction = new TransactionSet();
                     DateTime time = DateTime.UtcNow.Date;
 
@@ -41,8 +46,7 @@ namespace SuperIntendenceApp.Services
                     transaction.User_documentNumber = user.documentNumber;
                     transaction.User_documentType = user.documentType;
                     transaction.date = time.ToString("dd/MM/yyyy");
-
-
+                    
                     db.TransactionSet.Add(transaction);
 
                     try

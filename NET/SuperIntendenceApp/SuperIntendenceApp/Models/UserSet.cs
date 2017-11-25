@@ -27,20 +27,11 @@ namespace SuperIntendenceApp.Models
         public string password { get; set; }
         public string documentNumber { get; set; }
         public string documentType { get; set; }
+        public int balance { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BalanceSet> BalanceSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TransactionSet> TransactionSet { get; set; }
-
-        public bool ShouldSerializeTransactionSet()
-        {
-            return false;
-        }
-
-        public bool ShouldSerializeBalanceSet()
-        {
-            return false;
-        }
     }
 }

@@ -13,10 +13,10 @@ namespace SuperIntendenceApp.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SuperIntendenceEntities : DbContext
+    public partial class SQLServerDBEntities : DbContext
     {
-        public SuperIntendenceEntities()
-            : base("name=SuperIntendenceEntities")
+        public SQLServerDBEntities()
+            : base("name=SQLServerDBEntities")
         {
         }
     

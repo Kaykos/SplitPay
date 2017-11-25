@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SQLServerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BalanceSet">
           <Key>
             <PropertyRef Name="id" />
@@ -38,6 +38,7 @@
           <Property Name="password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="documentNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="documentType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="balance" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_UserBalance">
           <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
@@ -67,7 +68,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBModelStoreContainer">
+        <EntityContainer Name="SQLServerDBModelStoreContainer">
           <EntitySet Name="BalanceSet" EntityType="Self.BalanceSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionSet" EntityType="Self.TransactionSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserSet" EntityType="Self.UserSet" Schema="dbo" store:Type="Tables" />
@@ -84,7 +85,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SQLServerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BalanceSet">
           <Key>
             <PropertyRef Name="id" />
@@ -120,6 +121,7 @@
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="documentNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="documentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="balance" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BalanceSet" Relationship="Self.FK_UserBalance" FromRole="UserSet" ToRole="BalanceSet" />
           <NavigationProperty Name="TransactionSet" Relationship="Self.FK_UserTransaction" FromRole="UserSet" ToRole="TransactionSet" />
         </EntityType>
@@ -151,7 +153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SuperIntendenceEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SQLServerDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BalanceSet" EntityType="Self.BalanceSet" />
           <EntitySet Name="TransactionSet" EntityType="Self.TransactionSet" />
           <EntitySet Name="UserSet" EntityType="Self.UserSet" />
@@ -169,9 +171,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="SuperIntendenceEntities">
+        <EntityContainerMapping StorageEntityContainer="SQLServerDBModelStoreContainer" CdmEntityContainer="SQLServerDBEntities">
           <EntitySetMapping Name="BalanceSet">
-            <EntityTypeMapping TypeName="DBModel.BalanceSet">
+            <EntityTypeMapping TypeName="SQLServerDBModel.BalanceSet">
               <MappingFragment StoreEntitySet="BalanceSet">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="currentValue" ColumnName="currentValue" />
@@ -182,7 +184,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TransactionSet">
-            <EntityTypeMapping TypeName="DBModel.TransactionSet">
+            <EntityTypeMapping TypeName="SQLServerDBModel.TransactionSet">
               <MappingFragment StoreEntitySet="TransactionSet">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -195,7 +197,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserSet">
-            <EntityTypeMapping TypeName="DBModel.UserSet">
+            <EntityTypeMapping TypeName="SQLServerDBModel.UserSet">
               <MappingFragment StoreEntitySet="UserSet">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -203,6 +205,7 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
                 <ScalarProperty Name="documentType" ColumnName="documentType" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

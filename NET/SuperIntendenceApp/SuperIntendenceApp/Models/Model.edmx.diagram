@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="64bf02954ea8439c892f5b019f227351" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.BalanceSet" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.TransactionSet" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.UserSet" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <AssociationConnector Association="DBModel.FK_UserBalance" ManuallyRouted="false" />
-        <AssociationConnector Association="DBModel.FK_UserTransaction" ManuallyRouted="false" />
+      <Diagram DiagramId="b6d624d8ac8c4fdb9742d85a8e94ca29" Name="Diagram1">
+        <EntityTypeShape EntityType="SQLServerDBModel.BalanceSet" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLServerDBModel.TransactionSet" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLServerDBModel.UserSet" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="SQLServerDBModel.FK_UserBalance" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLServerDBModel.FK_UserTransaction" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
