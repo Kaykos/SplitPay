@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 4.1.3.901
---   en:        2017-11-24 18:20:48 COT
+--   en:        2017-11-24 23:41:28 COT
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -8,13 +8,13 @@
 
 CREATE TABLE Bill
   (
-    id        INTEGER NOT NULL ,
-    title     VARCHAR2 (100 CHAR) NOT NULL ,
-    cost      INTEGER NOT NULL ,
-    location  VARCHAR2 (100 CHAR) ,
-    type      VARCHAR2 (100 CHAR) ,
-    "comment" VARCHAR2 (100 CHAR) ,
-    grp       INTEGER NOT NULL
+    id       INTEGER NOT NULL ,
+    title    VARCHAR2 (100 CHAR) NOT NULL ,
+    cost     INTEGER NOT NULL ,
+    location VARCHAR2 (100 CHAR) ,
+    type     VARCHAR2 (100 CHAR) ,
+    note     VARCHAR2 (100 CHAR) ,
+    grp      INTEGER NOT NULL
   ) ;
 ALTER TABLE Bill ADD CONSTRAINT Bill_PK PRIMARY KEY ( id ) ;
 
