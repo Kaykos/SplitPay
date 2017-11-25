@@ -20,5 +20,7 @@ namespace SuperIntendencePresentation.Models
         }
 
         public System.Data.Entity.DbSet<SuperIntendencePresentation.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<SuperIntendencePresentation.Models.Transaction> Transactions { get; set; }
     }
 }

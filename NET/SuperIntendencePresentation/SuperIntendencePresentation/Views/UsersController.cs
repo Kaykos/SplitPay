@@ -48,12 +48,12 @@ namespace SuperIntendencePresentation.Views
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "name,email,password,documentNumber,documentType")] User user)
         {
-            System.Diagnostics.Debug.WriteLine("Entró");
             return View("Details", facade.Create(user));
         }
         
         // GET: users/edit/documentType/documentNumber
-        public ActionResult Edit(string documentType, string documentNumber) {
+        public ActionResult Edit(string documentType, string documentNumber)
+        {
             if (documentType == null || documentNumber == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -68,7 +68,8 @@ namespace SuperIntendencePresentation.Views
         // POST: users/edit/documentType/documentNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "name,email,password,documentType,documentNumber")] User user) {
+        public ActionResult Edit([Bind(Include = "name,email,password,documentType,documentNumber")] User user)
+        {
             return View(facade.Update(user));
         }
         

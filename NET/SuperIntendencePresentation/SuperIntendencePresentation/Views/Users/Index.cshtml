@@ -49,7 +49,8 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { documentType = item.documentType, documentNumber = item.documentNumber }) |
             @Html.ActionLink("Details", "Details", new { documentType = item.documentType, documentNumber = item.documentNumber }) |
-            @Html.ActionLink("Delete", "Delete", new { documentType = item.documentType, documentNumber = item.documentNumber })
+            @Html.ActionLink("Delete", "Delete", new { documentType = item.documentType, documentNumber = item.documentNumber }) |
+            @Html.ActionLink("Transactions", "../Transactions/Index", new { documentType = item.documentType, documentNumber = item.documentNumber })
         </td>
     </tr>
 }
